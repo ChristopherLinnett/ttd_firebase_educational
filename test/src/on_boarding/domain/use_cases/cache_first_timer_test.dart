@@ -19,11 +19,11 @@ void main() {
     'should call the [OnboardingRepo.cacheFirstTimer] '
     'and return the correct data',
     () async {
-      when(() => repo.cachefirstTimer())
+      when(() => repo.cacheFirstTimer())
           .thenAnswer((_) async => const ReturnSuccess(null));
       final result = await usecase();
       expect(result, equals(const ReturnSuccess(null)));
-      verify(() => repo.cachefirstTimer()).called(1);
+      verify(() => repo.cacheFirstTimer()).called(1);
       verifyNoMoreInteractions(repo);
     },
   );
