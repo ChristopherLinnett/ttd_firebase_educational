@@ -5,7 +5,8 @@ abstract class Failure extends Equatable {
   Failure({required this.message, required this.statusCode})
       : assert(
           statusCode is int || statusCode is String,
-          '${statusCode.runtimeType} is not valid for a statusCode, use a String or integer only',
+          '${statusCode.runtimeType} is not valid for a statusCode, '
+          'use a String or integer only',
         );
   final String message;
   final dynamic statusCode;
