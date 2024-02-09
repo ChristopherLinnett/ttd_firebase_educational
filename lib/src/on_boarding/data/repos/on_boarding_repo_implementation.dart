@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ttd_firebase_educational/core/common/errors/exceptions.dart';
 import 'package:ttd_firebase_educational/core/common/errors/failures.dart';
 import 'package:ttd_firebase_educational/core/utils/type_defs.dart';
-import 'package:ttd_firebase_educational/src/on_boarding/data/data_sources/on_boarding_data_source.dart';
+import 'package:ttd_firebase_educational/src/on_boarding/data/data_sources/on_boarding_local_data_source.dart';
 import 'package:ttd_firebase_educational/src/on_boarding/domain/repos/on_boarding_repo.dart';
 
 class OnBoardingRepoImplementation implements OnBoardingRepo {
@@ -13,7 +13,7 @@ class OnBoardingRepoImplementation implements OnBoardingRepo {
   ResultFuture<void> cacheFirstTimer() async {
     try {
       await _localDataSource.cacheFirstTimer();
-      return Right(null);
+      return const Right(null);
     } on CacheException catch (e) {
       return Left(CacheFailure(message: e.message, statusCode: e.statusCode));
     }

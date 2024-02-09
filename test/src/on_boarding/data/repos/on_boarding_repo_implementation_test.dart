@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:ttd_firebase_educational/core/common/errors/exceptions.dart';
 import 'package:ttd_firebase_educational/core/common/errors/failures.dart';
-import 'package:ttd_firebase_educational/src/on_boarding/data/data_sources/on_boarding_data_source.dart';
+import 'package:ttd_firebase_educational/src/on_boarding/data/data_sources/on_boarding_local_data_source.dart';
 import 'package:ttd_firebase_educational/src/on_boarding/data/repos/on_boarding_repo_implementation.dart';
 import 'package:ttd_firebase_educational/src/on_boarding/domain/repos/on_boarding_repo.dart';
 
@@ -53,7 +53,11 @@ void main() {
           expect(
             result,
             equals(Left<CacheFailure, dynamic>(CacheFailure(
-                message: 'Insufficient Storage', statusCode: 500))),
+                  message: 'Insufficient Storage',
+                  statusCode: 500,
+                ),
+              ),
+            ),
           );
           verify(() => localDataSource.cacheFirstTimer()).called(1);
           verifyNoMoreInteractions(localDataSource);

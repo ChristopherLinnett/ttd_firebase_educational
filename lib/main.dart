@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ttd_firebase_educational/core/res/colours.dart';
 import 'package:ttd_firebase_educational/core/res/fonts.dart';
+import 'package:ttd_firebase_educational/core/services/injection_container.dart';
 import 'package:ttd_firebase_educational/core/services/router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MyApp());
 }
 

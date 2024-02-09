@@ -25,8 +25,11 @@ class OnboardingLocalDataSourceImplementation
   }
 
   @override
-  Future<bool> checkIfUserFirstIsFirstTimer() {
-    // TODO: implement checkIfUserFirstIsFirstTimer
-    throw UnimplementedError();
+  Future<bool> checkIfUserFirstIsFirstTimer() async {
+    try {
+      return _prefs.getBool(kFirstTimeKey) ?? true;
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
   }
 }
