@@ -1,4 +1,5 @@
 class Fonts {
-  static const popping = 'Poppins';
+  Fonts._();
+  static const poppins = 'Poppins';
   static const aeonik = 'Aeonik';
 }

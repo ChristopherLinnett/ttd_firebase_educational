@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Clean Architecture App',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: Fonts.popping,
+        fontFamily: Fonts.poppins,
         appBarTheme: const AppBarTheme(
           scrolledUnderElevation: 0,
           color: Colors.transparent,
