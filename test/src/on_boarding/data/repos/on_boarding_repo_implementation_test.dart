@@ -52,7 +52,9 @@ void main() {
 
           expect(
             result,
-            equals(Left<CacheFailure, dynamic>(CacheFailure(
+            equals(
+              Left<CacheFailure, dynamic>(
+                CacheFailure(
                   message: 'Insufficient Storage',
                   statusCode: 500,
                 ),
@@ -60,6 +62,44 @@ void main() {
             ),
           );
           verify(() => localDataSource.cacheFirstTimer()).called(1);
+          verifyNoMoreInteractions(localDataSource);
+        });
+      });
+
+      group('checkIfUserIsFirstTimer', () {
+        final values = [true, false];
+        for (final value in values) {
+          test(
+              'should future result with $value when data source returns $value',
+              () async {
+            when(() => localDataSource.checkIfUserFirstIsFirstTimer())
+                .thenAnswer((_) async => Future.value(value));
+
+            final result = await repoImplementation.checkIfUserIsFirstTimer();
+
+            expect(result, equals(Right<dynamic, bool>(value)));
+            verify(() => localDataSource.checkIfUserFirstIsFirstTimer())
+                .called(1);
+            verifyNoMoreInteractions(localDataSource);
+          });
+        }
+        test('should throw [CacheError] when data source throws error',
+            () async {
+          when(() => localDataSource.checkIfUserFirstIsFirstTimer())
+              .thenThrow(const CacheException(message: 'Permission Error'));
+
+          final result = await repoImplementation.checkIfUserIsFirstTimer();
+
+          expect(
+            result,
+            equals(
+              Left<CacheFailure, dynamic>(
+                CacheFailure(message: 'Permission Error', statusCode: 500),
+              ),
+            ),
+          );
+          verify(() => localDataSource.checkIfUserFirstIsFirstTimer())
+              .called(1);
           verifyNoMoreInteractions(localDataSource);
         });
       });
