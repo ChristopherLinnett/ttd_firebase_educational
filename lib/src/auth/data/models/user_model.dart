@@ -14,10 +14,6 @@ class LocalUserModel extends LocalUser {
     super.profilePic,
     super.bio,
   });
-
-  const LocalUserModel.empty()
-      : this(uid: '', email: '', points: 0, fullName: '');
-
   LocalUserModel.fromMap(DataMap map)
       : super(
           uid: map['uid'] as String,
@@ -36,6 +32,34 @@ class LocalUserModel extends LocalUser {
           profilePic: map['profilePic'] as String?,
           bio: map['bio'] as String?,
         );
+
+  const LocalUserModel.empty()
+      : this(uid: '', email: '', points: 0, fullName: '');
+
+  LocalUserModel copyWith({
+    String? uid,
+    String? email,
+    int? points,
+    String? fullName,
+    List<String>? groupIds,
+    List<String>? enrolledCourseIds,
+    List<String>? followers,
+    List<String>? following,
+    String? profilePic,
+    String? bio,
+  }) =>
+      LocalUserModel(
+        uid: uid ?? this.uid,
+        email: email ?? this.email,
+        points: points ?? this.points,
+        fullName: fullName ?? this.fullName,
+        groupIds: groupIds ?? this.groupIds,
+        enrolledCourseIds: enrolledCourseIds ?? this.enrolledCourseIds,
+        followers: followers ?? this.followers,
+        following: following ?? this.following,
+        profilePic: profilePic ?? this.profilePic,
+        bio: bio ?? this.bio,
+      );
 
   DataMap toMap() {
     return {
