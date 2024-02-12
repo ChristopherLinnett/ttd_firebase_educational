@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138686518252",
+    "project_id": "tdd-education-app-27680",
+    "storage_bucket": "tdd-education-app-27680.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138686518252:android:e29e5b3f68ec732bef26c9",
+        "android_client_info": {
+          "package_name": "com.example.ttd_firebase_educational"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE8ofIGqmcNhQvJudw89rGIDl7IDcVwIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
