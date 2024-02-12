@@ -48,7 +48,10 @@ void main() {
         'Should return [ServerFailure] with appropriate server response is failed',
         () async {
           when(() => dataSource.forgotPassword(email: 'email')).thenThrow(
-            const ServerException(message: 'Invalid Response', statusCode: 404),
+            const ServerException(
+              message: 'Invalid Response',
+              statusCode: '404',
+            ),
           );
           final result = await repoImplementation.forgotPassword('email');
           expect(
@@ -57,7 +60,7 @@ void main() {
               Left<ServerFailure, void>(
                 ServerFailure(
                   message: 'Invalid Response',
-                  statusCode: 404,
+                  statusCode: '404',
                 ),
               ),
             ),
@@ -83,9 +86,7 @@ void main() {
               fullName: any(named: 'fullName'),
             ),
           ).thenAnswer(
-            (_) async => Future.value(
-              testUser,
-            ),
+            (_) async => Future.value(),
           );
           final result = await repoImplementation.signUp(
             email: testUser.email,
@@ -94,7 +95,7 @@ void main() {
           );
           expect(
             result,
-            equals(const Right<dynamic, LocalUserModel>(testUser)),
+            equals(const Right<dynamic, void>(null)),
           );
           verify(
             () => dataSource.signUp(
@@ -118,7 +119,7 @@ void main() {
           ).thenThrow(
             const ServerException(
               message: 'Invalid Password Length',
-              statusCode: 532,
+              statusCode: '532',
             ),
           );
           final result = await repoImplementation.signUp(
@@ -132,7 +133,7 @@ void main() {
               Left<ServerFailure, void>(
                 ServerFailure(
                   message: 'Invalid Password Length',
-                  statusCode: 532,
+                  statusCode: '532',
                 ),
               ),
             ),
@@ -193,7 +194,7 @@ void main() {
           ).thenThrow(
             const ServerException(
               message: 'Invalid Password Length',
-              statusCode: 532,
+              statusCode: '532',
             ),
           );
           final result = await repoImplementation.signIn(
@@ -206,7 +207,7 @@ void main() {
               Left<ServerFailure, void>(
                 ServerFailure(
                   message: 'Invalid Password Length',
-                  statusCode: 532,
+                  statusCode: '532',
                 ),
               ),
             ),
@@ -260,7 +261,10 @@ void main() {
               userData: any<dynamic>(named: 'userData'),
             ),
           ).thenThrow(
-            const ServerException(message: 'Invalid Response', statusCode: 404),
+            const ServerException(
+              message: 'Invalid Response',
+              statusCode: '404',
+            ),
           );
           final result = await repoImplementation.updateuser(
             action: UpdateUserAction.email,
@@ -272,7 +276,7 @@ void main() {
               Left<ServerFailure, void>(
                 ServerFailure(
                   message: 'Invalid Response',
-                  statusCode: 404,
+                  statusCode: '404',
                 ),
               ),
             ),
