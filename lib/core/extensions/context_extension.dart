@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ttd_firebase_educational/core/common/app/providers/user_provider.dart';
+import 'package:ttd_firebase_educational/src/auth/domain/entities/user.dart';
 
 extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -9,4 +12,8 @@ extension ContextExtension on BuildContext {
   double get height => size.height;
   double get width => size.width;
   Orientation get orientation => mediaQuery.orientation;
+
+  UserProvider get userProvider => read<UserProvider>();
+
+  LocalUser? get currentUser => userProvider.user;
 }
