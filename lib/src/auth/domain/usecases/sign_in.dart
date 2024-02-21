@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:ttd_firebase_educational/core/usecases/usecases.dart';
 import 'package:ttd_firebase_educational/core/utils/type_defs.dart';
+import 'package:ttd_firebase_educational/src/auth/domain/entities/user.dart';
 import 'package:ttd_firebase_educational/src/auth/domain/repos/auth_repo.dart';
 
 class SignIn extends UsecaseWithParams<void, SignInParams> {
@@ -9,7 +10,7 @@ class SignIn extends UsecaseWithParams<void, SignInParams> {
   final AuthRepo _repo;
 
   @override
-  ResultFuture<void> call(SignInParams params) =>
+  ResultFuture<LocalUser> call(SignInParams params) =>
       _repo.signIn(email: params.email, password: params.password);
 }
 
