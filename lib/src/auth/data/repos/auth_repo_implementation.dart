@@ -7,8 +7,8 @@ import 'package:ttd_firebase_educational/src/auth/data/data_sources/auth_remote_
 import 'package:ttd_firebase_educational/src/auth/domain/entities/user.dart';
 import 'package:ttd_firebase_educational/src/auth/domain/repos/auth_repo.dart';
 
-class AuthRepoImplementaiton extends AuthRepo {
-  const AuthRepoImplementaiton({required AuthRemoteDataSource remoteDataSource})
+class AuthRepoImplementation extends AuthRepo {
+  const AuthRepoImplementation({required AuthRemoteDataSource remoteDataSource})
       : _remoteDataSource = remoteDataSource;
   final AuthRemoteDataSource _remoteDataSource;
   @override

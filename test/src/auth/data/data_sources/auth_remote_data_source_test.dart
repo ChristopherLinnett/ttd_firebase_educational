@@ -299,7 +299,7 @@ void main() {
         verify(() => mockUser.updateDisplayName(tFullName)).called(1);
 
         verifyNever(() => mockUser.updatePhotoURL(any()));
-        verifyNever(() => mockUser.updateEmail(any()));
+        verifyNever(() => mockUser.verifyBeforeUpdateEmail(any()));
         verifyNever(() => mockUser.updatePassword(any()));
 
         final userData =
@@ -313,7 +313,7 @@ void main() {
       'should update user email successfully when no [Exception] '
       'is thrown',
       () async {
-        when(() => mockUser.updateEmail(any()))
+        when(() => mockUser.verifyBeforeUpdateEmail(any()))
             .thenAnswer((_) async => Future.value());
 
         await dataSource.updateUser(
@@ -321,7 +321,7 @@ void main() {
           userData: tEmail,
         );
 
-        verify(() => mockUser.updateEmail(tEmail)).called(1);
+        verify(() => mockUser.verifyBeforeUpdateEmail(tEmail)).called(1);
 
         verifyNever(() => mockUser.updateDisplayName(any()));
         verifyNever(() => mockUser.updatePhotoURL(any()));
@@ -354,7 +354,7 @@ void main() {
 
         verifyNever(() => mockUser.updateDisplayName(any()));
         verifyNever(() => mockUser.updatePhotoURL(any()));
-        verifyNever(() => mockUser.updateEmail(any()));
+        verifyNever(() => mockUser.verifyBeforeUpdateEmail(any()));
         verifyNever(() => mockUser.updatePassword(any()));
       },
     );
@@ -384,7 +384,7 @@ void main() {
 
         verifyNever(() => mockUser.updateDisplayName(any()));
         verifyNever(() => mockUser.updatePhotoURL(any()));
-        verifyNever(() => mockUser.updateEmail(any()));
+        verifyNever(() => mockUser.verifyBeforeUpdateEmail(any()));
 
         final user = await dbClient
             .collection('users')
@@ -416,7 +416,7 @@ void main() {
 
         verifyNever(() => mockUser.updateDisplayName(any()));
         verifyNever(() => mockUser.updatePassword(any()));
-        verifyNever(() => mockUser.updateEmail(any()));
+        verifyNever(() => mockUser.verifyBeforeUpdateEmail(any()));
 
         expect(cloudStoreClient.storedFilesMap.isNotEmpty, isTrue);
       },

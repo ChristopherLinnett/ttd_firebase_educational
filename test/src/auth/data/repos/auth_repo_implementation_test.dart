@@ -13,13 +13,13 @@ class MockAuthRemoteDataSource extends Mock implements AuthRemoteDataSource {}
 
 void main() {
   late AuthRemoteDataSource dataSource;
-  late AuthRepoImplementaiton repoImplementation;
+  late AuthRepoImplementation repoImplementation;
   const testUser = LocalUserModel.empty();
   const testUpdateUserAction = UpdateUserAction.email;
 
   setUp(() {
     dataSource = MockAuthRemoteDataSource();
-    repoImplementation = AuthRepoImplementaiton(remoteDataSource: dataSource);
+    repoImplementation = AuthRepoImplementation(remoteDataSource: dataSource);
     registerFallbackValue(testUpdateUserAction);
   });
 
