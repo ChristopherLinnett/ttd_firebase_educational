@@ -27,7 +27,11 @@ class RoundedButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: context.textTheme.bodyLarge?.copyWith(fontFamily: Fonts.aeonik),
+        style: context.textTheme.bodyLarge?.copyWith(
+          fontFamily: Fonts.aeonik,
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
