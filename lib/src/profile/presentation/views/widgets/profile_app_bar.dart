@@ -2,11 +2,15 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ttd_firebase_educational/core/common/widgets/popup_item.dart';
 import 'package:ttd_firebase_educational/core/extensions/context_extension.dart';
 import 'package:ttd_firebase_educational/core/res/colours.dart';
 import 'package:ttd_firebase_educational/core/services/injection_container.dart';
+import 'package:ttd_firebase_educational/src/auth/domain/usecases/update_user.dart';
+import 'package:ttd_firebase_educational/src/auth/presentation/bloc/auth_bloc.dart';
+import 'package:ttd_firebase_educational/src/profile/presentation/views/edit_profile_view.dart';
 
 class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ProfileAppBar({
@@ -31,7 +35,12 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           itemBuilder: (_) => [
             PopupMenuItem<void>(
-              onTap: () => context.push(const Placeholder()),
+              onTap: () => context.push(
+                BlocProvider<AuthBloc>(
+                  create: (context) =>  sl<AuthBloc>(),
+                  child: const EditProfileView(),
+                ),
+              ),
               child: const PopupItem(
                 title: 'Edit Profile',
                 icon: Icon(

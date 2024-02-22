@@ -17,13 +17,13 @@ extension ContextExtension on BuildContext {
 
   UserProvider get userProvider => read<UserProvider>();
 
-  LocalUser? get currentUser => userProvider.user;
+  LocalUser? get user => userProvider.user;
 
   DashboardController get dashboardController => read<DashboardController>();
 
   TabNavigator get tabNavigator => read<TabNavigator>();
 
-  void get pop => tabNavigator.pop;
+  void pop() => tabNavigator.pop();
 
   void push(Widget page) => tabNavigator.push(TabItem(child: page));
 }
