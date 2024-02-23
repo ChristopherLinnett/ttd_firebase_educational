@@ -12,6 +12,15 @@ class TabNavigator extends ChangeNotifier {
 
   TabItem get currentPage => _navigationStack.last;
 
+  String? get previousPageType => _navigationStack.length == 1
+      ? null
+      : _navigationStack[_navigationStack.length - 2]
+          .child
+          .runtimeType
+          .toString()
+          .replaceAll('View', '')
+          .replaceAll('Page', '');
+
   void push(TabItem page) {
     _navigationStack.add(page);
     notifyListeners();

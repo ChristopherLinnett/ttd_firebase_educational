@@ -15,14 +15,22 @@ class NestedBackButton extends StatelessWidget {
           Navigator.of(context).pop();
         }
       },
-      child: BackButton(
-        onPressed: () {
-          try {
-            context.pop();
-          } catch (_) {
-            Navigator.of(context).pop();
-          }
-        },
+      child: Tooltip(
+        message: context.tabNavigator.previousPageType,
+        child: IconButton(
+          icon: Icon(
+            context.theme.platform == TargetPlatform.iOS
+                ? Icons.arrow_back_ios_new
+                : Icons.arrow_back,
+          ),
+          onPressed: () {
+            try {
+              context.pop();
+            } catch (_) {
+              Navigator.of(context).pop();
+            }
+          },
+        ),
       ),
     );
   }
