@@ -8,7 +8,6 @@ import 'package:ttd_firebase_educational/core/common/widgets/popup_item.dart';
 import 'package:ttd_firebase_educational/core/extensions/context_extension.dart';
 import 'package:ttd_firebase_educational/core/res/colours.dart';
 import 'package:ttd_firebase_educational/core/services/injection_container.dart';
-import 'package:ttd_firebase_educational/src/auth/domain/usecases/update_user.dart';
 import 'package:ttd_firebase_educational/src/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ttd_firebase_educational/src/profile/presentation/views/edit_profile_view.dart';
 

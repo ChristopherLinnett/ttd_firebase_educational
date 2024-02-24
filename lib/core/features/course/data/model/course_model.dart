@@ -43,6 +43,8 @@ class CourseModel extends Course {
       : this(
           id: '',
           title: '',
+          description: '',
+          image: '',
           numberOfExams: 0,
           numberOfMaterials: 0,
           numberOfVideos: 0,
